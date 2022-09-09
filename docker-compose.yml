@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  pivoter:
+    container_name: pivoter
+    build: pivoter
+    ports:
+      - 80:80
+    networks:
+      external:
+      internal1:
+        ipv4_address: 172.20.0.2
+  greeter:
+    container_name: greeter
+    image: nginx:latest
+    volumes:
+      - ./greeter/:/usr/share/nginx/html/
+    networks:
+      internal1:
+        ipv4_address: 172.20.0.5
+      internal2:
+        ipv4_address: 172.20.1.5
+  proxy:
+    container_name: proxy
+    image: serjs/go-socks5-proxy
+    environment:
+      - PROXY_PORT=1080
+      - PROXY_USER=
+      - PROXY_PASSWORD=
+    ports:
+      - 1080:1080
+    networks:
+      internal1:
+        ipv4_address: 172.20.0.44
+      internal2:
+        ipv4_address: 172.20.1.44
+  finisher:
+    container_name: finisher
+    image: nginx:latest
+    volumes:
+      - ./finisher/:/usr/share/nginx/html/
+    networks:
+      internal2:
+        ipv4_address: 172.20.1.200
+
+networks:
+  external:
+  internal1:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.0/24"
+  internal2:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.1.0/24"

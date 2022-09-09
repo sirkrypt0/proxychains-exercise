@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Welcome</title>
+  <style>
+    body {
+        background-color: #111111;
+        color: white;
+    }
+    .container {
+        margin: 0 auto;
+        width: 80%;
+        max-width: 1000px;
+        padding: 20px 20px;
+    }
+    .center {
+        text-align: center;
+    }
+    img {
+        width: auto;
+        height: auto;
+    }
+    .main {
+        display: flex;
+    }
+    .main > div {
+        padding: 10px;
+    }
+    .left-text {
+        float: left;
+        width: 50%;
+        text-align: justify;
+    }
+    .right-picture {
+        float: right;
+        width: 50%;
+    }
+    .right-picture > img{
+        display: block;
+        width: 100%;
+    }
+    code {
+        color: yellow;
+        font-size: larger;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="center">Welcome!</h1>
+    <div class="main">
+        <div class="left-text">
+            <p>Hello Stranger!</p>
+            <p>
+                I am glad you found my cave.
+                To ensure that my little place is not accessible to everyone,
+                I built a door that protects my internal caves from the outside.
+            </p>
+            <p>
+                There is some service in this cave that hosts a SOCKS5 proxy on port <code>1080</code>, which enables access to my deeper caves.
+                But beware, it's dark inside, so make sure to bring your lights.
+            </p>
+            <p>
+                The key to entering the door is <code>proxychains</code>.
+                Once you're in the cave, you can reach me at <code>172.20.1.5</code>.
+            </p>
+            <p>
+                But beware, the deeper you get, the more dangerous things you will find!
+            </p>
+            <p>
+                Enjoy the tour and come back safely ...
+            </p>
+        </div>
+        <div class="right-picture">
+            <img src="proxychains.jpg" />
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
